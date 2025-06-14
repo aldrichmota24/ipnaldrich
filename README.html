@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPN: Cuna de la Técnica al Servicio de la Patria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: 'Open Sans', sans-serif; /* Fuente principal para el cuerpo */
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Fondo más suave */
+            color: #333; /* Texto oscuro general */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(to right, #800000, #b30000); /* Degradado guinda/rojo oscuro */
+            color: #fff;
+            padding: 20px 0;
+            min-height: 80px; /* Aumenta altura */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky; /* Encabezado fijo al hacer scroll */
+            top: 0;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        }
+
+        header .logo-ipn {
+            height: 70px; /* Tamaño un poco más grande del logo */
+            margin: 0 25px;
+            transition: transform 0.3s ease; /* Efecto al pasar el mouse */
+        }
+
+        header .logo-ipn:hover {
+            transform: scale(1.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif; /* Fuente de título */
+            font-size: 2.8em; /* Título más grande */
+            font-weight: 700; /* Más negrita */
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+        }
+
+        /* Navegación */
+        nav {
+            background: #34495e; /* Azul grisáceo oscuro para la navegación */
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky; /* Navegación fija */
+            top: 80px; /* Debajo del header */
+            z-index: 999;
+        }
+
+        nav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: center;
+            display: flex; /* Flexbox para centrar y distribuir */
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline-block; /* Permite margen y padding vertical */
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 30px; /* Más padding */
+            display: inline-block;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+        }
+
+        nav ul li a:hover {
+            background-color: #2c3e50; /* Tono más oscuro al pasar el mouse */
+            color: #f9c74f; /* Color de acento para el texto */
+        }
+
+        /* Portada */
+        #portada {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Instituto_Polit%C3%A9cnico_Nacional_en_la_CDMX.jpg/1200px-Instituto_Polit%C3%A9cnico_Nacional_en_la_CDMX.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 180px 0; /* Más padding vertical */
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9); /* Sombra de texto más intensa */
+            animation: fadeIn 1.5s ease-out; /* Animación de aparición */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #portada h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5em; /* Título de portada más grande */
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        #portada p {
+            font-size: 1.8em; /* Lema más grande */
+            font-style: italic;
+            border-bottom: 2px solid #f9c74f; /* Borde decorativo */
+            padding-bottom: 10px;
+        }
+
+        /* Secciones de Contenido */
+        section {
+            padding: 50px 0; /* Más padding vertical */
+            margin-bottom: 40px; /* Más espacio entre secciones */
+            background-color: #fff;
+            border-radius: 12px; /* Bordes más redondeados */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Sombra más suave y extendida */
+            transition: transform 0.3s ease-in-out; /* Transición para efecto hover */
+        }
+
+        section:hover {
+            transform: translateY(-5px); /* Efecto "lift" al pasar el mouse */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        section.container {
+            padding: 50px; /* Padding interior más amplio */
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 40px; /* Más espacio debajo del título */
+            font-size: 3.2em; /* Título de sección más grande */
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after { /* Línea decorativa debajo del título */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #f9c74f; /* Color de acento */
+            border-radius: 2px;
+        }
+
+        section h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #546e7a;
+            margin-top: 35px; /* Más espacio arriba del subtítulo */
+            margin-bottom: 20px;
+            font-size: 2.4em; /* Subtítulos más grandes */
+            border-left: 6px solid #f9c74f; /* Borde izquierdo decorativo */
+            padding-left: 15px;
+        }
+
+        /* Párrafos */
+        p {
+            font-size: 1.15em; /* Tamaño de texto ligeramente más grande */
+            line-height: 1.8; /* Mejor legibilidad */
+            margin-bottom: 1.5em;
+        }
+
+        /* Listas */
+        ul.simple-list, ol.numbered-list {
+            margin-left: 30px;
+            padding-left: 15px;
+            font-size: 1.1em;
+        }
+
+        ul.simple-list li, ol.numbered-list li {
+            margin-bottom: 10px;
+        }
+
+        ul.simple-list li::before { /* Estilo para ítems de lista no ordenada */
+            content: "•";
+            color: #d32f2f;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        ul.nested-list li ul {
+            margin-left: 30px;
+            list-style-type: disc; /* Vuelve a disco para anidada */
+        }
+        ul.nested-list li ul li::before {
+             content: ""; /* Resetea el estilo del padre */
+        }
+
+
+        ol.numbered-list li {
+            counter-increment: list-item;
+            position: relative;
+        }
+
+        ol.numbered-list li::before {
+            content: counter(list-item) ".";
+            color: #d32f2f;
+            font-weight: bold;
+            position: absolute;
+            left: -30px; /* Ajusta la posición del número */
+        }
+
+
+        ol.nested-list li ol {
+            margin-left: 30px;
+            list-style-type: lower-alpha;
+        }
+
+        /* Imágenes */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px; /* Más espacio entre imágenes */
+            margin-top: 40px;
+        }
+
+        .image-gallery img {
+            width: 250px; /* Imágenes de galería más grandes */
+            height: 180px;
+            object-fit: cover;
+            border: 6px solid #e0e0e0; /* Borde más grueso y claro */
+            border-radius: 12px; /* Bordes más redondeados */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer; /* Indica que es interactivo */
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.12) rotate(2deg); /* Escala y rota ligeramente */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Sombra más intensa */
+            border-color: #f9c74f; /* Borde de acento al pasar el mouse */
+        }
+
+        .center-image {
+            display: block;
+            margin: 40px auto;
+            max-width: 90%; /* Ancho máximo de la imagen central */
+            height: auto;
+            border: 12px solid #f0f2f5; /* Borde más grueso y claro */
+            border-radius: 15px; /* Bordes aún más redondeados */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+        }
+
+        .link-image-container {
+            text-align: center;
+            margin-top: 30px;
+            display: flex; /* Para centrar contenido dentro del contenedor */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .link-image {
+            width: 150px; /* Imágenes de enlace más grandes */
+            height: auto;
+            border: 4px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .link-image:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border-color: #d32f2f; /* Borde de acento al pasar el mouse */
+        }
+
+        .link-image-container p a {
+            text-decoration: none;
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .link-image-container p a:hover {
+            color: #800000;
+            text-decoration: underline;
+        }
+
+        /* Multimedia */
+        .multimedia-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px; /* Más espacio entre elementos multimedia */
+            margin-top: 40px;
+        }
+
+        audio, video {
+            width: 95%; /* Ancho más adaptable */
+            max-width: 800px; /* Ancho máximo de los controles */
+            border: 5px solid #d32f2f; /* Borde más visible */
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            background-color: #000; /* Fondo negro para el video/audio */
+        }
+
+        .multimedia-container h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: #546e7a;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .multimedia-container p {
+            font-size: 1.15em;
+            color: #555;
+            text-align: center;
+            max-width: 700px; /* Ancho máximo para la descripción */
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            text-align: left;
+            background-color: #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 1.05em;
+        }
+
+        table caption {
+            padding: 20px;
+            font-size: 1.5em; /* Título de tabla más grande */
+            color: #d32f2f; /* Color de acento */
+            font-weight: bold;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #eee;
+        }
+
+        table th, table td {
+            padding: 18px; /* Más padding en celdas */
+            border-bottom: 1px solid #e9ecef; /* Líneas divisorias más suaves */
+        }
+
+        table th {
+            background-color: #800000; /* Guinda oscuro */
+            color: white;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        table tbody tr:hover {
+            background-color: #e3e6ea; /* Resaltado más suave */
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .table-image {
+            width: 120px; /* Imágenes de tabla más grandes */
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #f0f2f5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Definiciones */
+        dl {
+            margin-top: 40px;
+            background-color: #fcfcfc; /* Fondo más claro */
+            padding: 25px;
+            border-left: 10px solid #d32f2f; /* Borde más grueso */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        dt {
+            font-weight: bold;
+            color: #d32f2f;
+            margin-top: 20px;
+            font-size: 1.2em; /* Texto de término más grande */
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        dd {
+            margin-left: 30px;
+            margin-bottom: 18px;
+            color: #495057;
+            font-size: 1.05em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            background: #2c3e50; /* Azul grisáceo oscuro para el footer */
+            color: #e0e0e0;
+            margin-top: 50px;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra interna */
+        }
+
+        footer .container {
+            border-top: 1px solid #4a627a; /* Línea separadora más sutil */
+            padding-top: 25px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 1em;
+            color: #b0c4de; /* Texto del footer más claro */
+        }
+
+        /* Estilos adicionales para Símbolos */
+        #simbolos table {
+            width: 90%; /* Ancho ajustado para la tabla de símbolos */
+        }
+
+        #simbolos img {
+            max-width: 120px; /* Tamaño máximo de los logos en la tabla de símbolos */
+            height: auto;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        #simbolos td {
+            text-align: center;
+            vertical-align: middle; /* Centrado vertical */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                min-height: 100px;
+            }
+            header .logo-ipn {
+                margin-bottom: 10px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                display: block;
+                width: 100%;
+            }
+            nav ul li a {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+            #portada {
+                padding: 100px 0;
+            }
+            #portada h2 {
+                font-size: 3em;
+            }
+            #portada p {
+                font-size: 1.2em;
+            }
+            section.container {
+                padding: 30px;
+            }
+            section h2 {
+                font-size: 2.2em;
+            }
+            section h3 {
+                font-size: 1.8em;
+            }
+            .image-gallery img {
+                width: 180px;
+                height: 130px;
+            }
+            .link-image {
+                width: 100px;
+            }
+            audio, video {
+                width: 100%;
+            }
+            table th, table td {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+            .table-image {
+                width: 80px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            #portada h2 {
+                font-size: 2.2em;
+            }
+            #portada p {
+                font-size: 1em;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            section h3 {
+                font-size: 1.5em;
+            }
+            .image-gallery img {
+                width: 100%; /* Imágenes de galería se vuelven 100% en móviles */
+                height: auto;
+            }
+            .link-image {
+                width: 80px;
+            }
+            table {
+                font-size: 0.8em;
+            }
+            .table-image {
+                width: 60px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR36syC4-aqDdW2VXTWdi8q_en3BQVYalre_w&s class="logo-ipn" alt="Escudo IPN Izquierdo">
+            <h1>Instituto Politécnico Nacional</h1>
+            <img src=https://cecyt4.ipn.mx/assets/files/cecyt4/img/conocenos/mision/escudo.jpg class="logo-ipn" alt="Escudo IPN Derecho">
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#informacion">Información General</a></li>
+            <li><a href="#academica">Oferta Académica</a></li>
+            <li><a href="#multimedia">Multimedia</a></li>
+            <li><a href="#directorio">Directorio</a></li>
+            <li><a href="#enlaces">Enlaces</a></li>
+            <li><a href="#simbolos">Símbolos IPN</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="portada">
+            <h2>Orgullo IPN</h2>
+            <p>La Técnica al Servicio de la Patria</p>
+        </section>
+
+        <section id="informacion" class="container">
+            <h2>Acerca del IPN</h2>
+            <p>El **Instituto Politécnico Nacional (IPN)** es una de las instituciones educativas más importantes y prestigiosas de México y América Latina. Fue fundado el **1 de enero de 1936** por el entonces Presidente Lázaro Cárdenas del Río, con una visión clara: ofrecer educación técnica y científica de vanguardia a los jóvenes del país, impulsando así el desarrollo industrial, tecnológico y social de la nación.</p>
+            <p>A lo largo de sus más de 85 años de historia, el IPN ha formado a cientos de miles de profesionales altamente capacitados en un amplio espectro de áreas del conocimiento. Su oferta educativa abarca desde las **ingenierías** y **ciencias físico-matemáticas**, hasta las **ciencias médico-biológicas** y las **ciencias sociales y administrativas**, consolidándose como un pilar fundamental en la educación superior mexicana.</p>
+            <p>Una parte esencial de la formación politécnica de nivel medio superior se encuentra en los **Centros de Estudios Científicos y Tecnológicos (CECyT)**, popularmente conocidos como "Vocacionales". Estas escuelas, como el emblemático **CECyT No. 4 "Lázaro Cárdenas" (Voca 4)**, son fundamentales en la preparación de futuros ingenieros, científicos y técnicos, brindando una sólida base de conocimientos y habilidades que facilitan el ingreso y el éxito en las carreras de nivel superior del mismo Instituto y en el ámbito laboral.</p>
+            <h3>Misión y Visión</h3>
+            <p>La **Misión** del IPN es formar integralmente profesionales con un alto sentido ético, social y humanista, capaces de generar, aplicar, innovar y difundir el conocimiento científico y tecnológico para dar solución a los problemas del país, con una perspectiva global. Su **Visión** es ser una institución educativa líder en el ámbito nacional e internacional, reconocida por su excelencia académica, su relevante investigación de vanguardia, su compromiso social y su contribución significativa al desarrollo sostenible, la innovación y la competitividad.</p>
+            <p>El IPN se compromete a la transformación de México a través de la educación, la investigación y la innovación tecnológica, siendo un referente de calidad y pertinencia educativa.</p>
+        </section>
+
+        <section id="academica" class="container">
+            <h2>Oferta Académica Integral</h2>
+
+            <h3>Áreas de Conocimiento Estratégicas</h3>
+            <p>El IPN organiza su oferta educativa en tres grandes áreas de conocimiento, que responden a las necesidades del desarrollo nacional e internacional:</p>
+            <ul class="simple-list">
+                <li>**Ingeniería y Ciencias Físico-Matemáticas:** Incluye disciplinas como ingeniería en sistemas, mecánica, eléctrica, civil, aeronáutica, matemáticas, física, entre otras. Es el motor de la innovación tecnológica e industrial.</li>
+                <li>**Ciencias Médico-Biológicas:** Aborda campos como medicina, biología, química, farmacia, biotecnología y ciencias de la salud, enfocándose en la investigación y mejora de la calidad de vida.</li>
+                <li>**Ciencias Sociales y Administrativas:** Comprende áreas como contaduría, administración, economía, relaciones comerciales, turismo y comunicación, formando líderes y expertos en gestión y desarrollo social.</li>
+            </ul>
+
+            <h3>Escuelas y Centros Destacados del IPN</h3>
+            <p>Dentro de estas áreas, el IPN cuenta con escuelas y centros de renombre que son referentes en sus respectivos campos:</p>
+            <ol class="numbered-list">
+                <li>**Escuela Superior de Ingeniería Mecánica y Eléctrica (ESIME):** Con sus diversas unidades, es cuna de ingenieros que han transformado la industria nacional en energía, transporte y automatización.</li>
+                <li>**Escuela Superior de Comercio y Administración (ESCA):** Pionera en la formación de profesionales en ciencias económico-administrativas, con unidades como Santo Tomás y Tepepan.</li>
+                <li>**Escuela Nacional de Ciencias Biológicas (ENCB):** Centro de excelencia en la investigación y formación de biólogos, químicos y farmacéuticos, con importantes contribuciones a la salud y la biotecnología.</li>
+                <li>**Centro de Investigación y de Estudios Avanzados (CINVESTAV):** Aunque es un organismo descentralizado del IPN, está estrechamente ligado y es uno de los centros de investigación científica y tecnológica más importantes de México y América Latina.</li>
+                <li>**Unidad Profesional Interdisciplinaria de Ingeniería y Ciencias Sociales y Administrativas (UPIICSA):** Destaca por su enfoque interdisciplinario en áreas de ingeniería industrial, informática, transporte y administración.</li>
+            </ol>
+
+            <h3>Programas Académicos: Formación de Vanguardia (Listas Anidadas)</h3>
+            <p>La oferta académica del IPN se estructura en diversos niveles, desde técnico hasta posgrado, adaptándose a las exigencias del mercado laboral y la investigación:</p>
+            <ul class="nested-list">
+                <li>**Licenciaturas:**
+                    <ul class="nested-list">
+                        <li>**Ingeniería en Sistemas Computacionales:** Una de las carreras con mayor demanda, enfocada en el diseño, desarrollo e implementación de software y hardware.</li>
+                        <li>**Contaduría Pública:** Prepara a profesionales para la gestión financiera, auditoría y fiscalidad en organizaciones públicas y privadas.</li>
+                        <li>**Médico Cirujano y Partero:** Forma médicos con una sólida base científica y humanística, comprometidos con la salud pública.</li>
+                        <li>**Ingeniería Biomédica:** Fusiona la ingeniería con las ciencias de la vida para desarrollar tecnología aplicada a la medicina.</li>
+                        <li>**Licenciatura en Turismo:** Desarrolla profesionales capaces de gestionar y promover proyectos turísticos sostenibles.</li>
+                    </ul>
+                </li>
+                <li>**Posgrados:** El IPN cuenta con un robusto sistema de posgrado que fomenta la investigación y la especialización:
+                    <ol class="nested-list">
+                        <li>**Maestría en Ciencias de la Computación:** Para profundizar en algoritmos, inteligencia artificial, ciberseguridad y desarrollo de software avanzado.</li>
+                        <li>**Doctorado en Ciencias Biomédicas:** Orientado a la investigación de frontera en áreas como la fisiología, farmacología, genética y microbiología.</li>
+                        <li>**Maestría en Administración de Negocios (MBA):** Programas enfocados en la dirección estratégica y la innovación empresarial.</li>
+                        <li>**Doctorado en Ingeniería Mecánica:** Investigación avanzada en diseño, manufactura y sistemas energéticos.</li>
+                    </ol>
+                </li>
+            </ul>
+        </section>
+
+        <section class="container">
+            <h2>Decálogo del IPN: Principios y Valores</h2>
+            <p>El **Decálogo del Instituto Politécnico Nacional** es un conjunto de diez principios fundamentales que guían el actuar de toda la comunidad politécnica: estudiantes, profesores, investigadores y personal administrativo. Estos principios reflejan el espíritu y los valores que la institución busca inculcar en sus miembros, fomentando la excelencia académica, el compromiso social, la ética y la identidad politécnica.</p>
+            <div class="link-image-container">
+                <a href="https://www.studocu.com/es-mx/document/escuela-superior-de-ingenieria-mecanica-y-electrica/humanidades-iii/decalogo-ipn-decalogo-explicado/69404423" target="https://www.studocu.com/es-mx/document/escuela-superior-de-ingenieria-mecanica-y-electrica/humanidades-iii/decalogo-ipn-decalogo-explicado/69404423">
+                    <img src=https://pbs.twimg.com/media/Cyb-9AUUoAAtd-T.jpg alt="Imagen del Decálogo del IPN" class="link-image">
+                </a>
+                <p>Te invitamos a conocer cada uno de los puntos que conforman esta guía esencial para la vida politécnica. <a href="https://www.ipn.mx/somos-ipn/decalogo.html" target="_blank">Ver Decálogo Completo</a></p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Reglamento General de Estudios del IPN: Marco Normativo</h2>
+            <p>El **Reglamento General de Estudios del Instituto Politécnico Nacional** es el documento normativo que establece las reglas y directrices académicas para todos los niveles y modalidades de estudio en el IPN. Aquí se definen los derechos y obligaciones de los estudiantes, los criterios de evaluación, los procesos de inscripción, bajas, revalidación, titulación y todo lo relacionado con la trayectoria académica. Es fundamental que cada estudiante y miembro de la comunidad conozca este reglamento para asegurar una experiencia educativa transparente y ordenada.</p>
+            <div class="link-image-container">
+                <a href="https://www.ipn.mx/assets/files/normatividad/docs/reglamentos/reglamento-organico-ipn-2020.pdf" target="https://www.ipn.mx/assets/files/normatividad/docs/reglamentos/reglamento-organico-ipn-2020.pdf">
+                    <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCreooIiAgG4mzcycPD0JNug3Sjw1R6Po-nA&s alt="Imagen del Reglamento General de Estudios" class="link-image">
+                </a>
+                <p>Descarga y consulta el reglamento completo para resolver cualquier duda sobre tus estudios. <a href="https://www.ipn.mx/assets/files/normatividad/Reglamento-General-de-Estudios-2022.pdf" target="_blank">Ver Reglamento Completo (PDF)</a></p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>¡Huelum! ¡Gloria! El Grito Politécnico</h2>
+            <p>El **"¡Huelum! ¡Huelum! ¡Gloria! ¡A la Cachi Cachi Porra! ¡PUM! ¡PUM! ¡PUM! ¡Porra! ¡Porra! ¡Ra Ra Ra! ¡Politécnico! ¡Politécnico! ¡Ra Ra Ra!"** es mucho más que una porra; es el grito de batalla, el himno espontáneo y el símbolo de unidad y fervor de la comunidad politécnica. Resuena en cada evento deportivo, en cada celebración académica y en el corazón de cada politécnico, transmitiendo la pasión y el orgullo por la institución. Su origen se remonta a los años 30 y ha evolucionado, pero su esencia de unión y fuerza permanece intacta.</p>
+            <audio controls>
+                <source src=https://drive.google.com/file/d/1xfwlICjugfnGxhtdF-m2VTd8u0ewdDEB/view?usp=drive_link type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+            <p>Escucha el poderoso ¡Huelum! y siente el espíritu politécnico.</p>
+        </section>
+
+        <section class="container">
+            <h2>Porra del CECyT 4 "Lázaro Cárdenas": El Rugido de la Voca 4</h2>
+            <div class="multimedia-container">
+                <p>Cada CECyT tiene su propia porra que identifica y enciende el ánimo de sus estudiantes. La porra del **CECyT No. 4 "Lázaro Cárdenas"**, conocida cariñosamente como **Voca 4**, es un reflejo de su identidad y tradición. Es un grito que une a generaciones de vocacionistas, fortaleciendo el sentido de pertenencia y camaradería. Aquí puedes ver y escuchar la energía que se vive en cada evento del CECyT 4.</p>
+                <h3>Video de la Porra del CECyT 4</h3>
+                <video controls width="640" height="360">
+                    <source src="Nueva carpeta\audio y foto\porra cecyt 4.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <h3>Audio de la Porra del CECyT 4</h3>
+                <audio controls>
+                    <source src="Nueva carpeta\audio y foto\porra cecyt 4.mp4" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        </section>
+
+        <section id="simbolos" class="container">
+            <h2>Símbolos Politécnicos: Identidad y Tradición</h2>
+            <p>Los símbolos del IPN son elementos clave que representan su historia, sus valores y su visión. Cada uno tiene un significado profundo que resuena con la identidad de la comunidad politécnica.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Símbolo</th>
+                        <th>Descripción y Significado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="Nueva carpeta\imagenes\escudo.jpg" alt="Escudo del IPN"></td>
+                        <td><strong>Escudo del IPN:</strong> Creado en 1944, es una representación visual de la filosofía del Instituto: **"La Técnica al Servicio de la Patria"**.
+                            <ul>
+                                <li>El **Engrane** (izquierda) y el **Matraz** (derecha) simbolizan el área de Ingeniería y Ciencias Físico-Matemáticas, y las Ciencias Médico-Biológicas, respectivamente.</li>
+                                <li>El **Libro Abierto** representa las Ciencias Sociales y Administrativas y el conocimiento.</li>
+                                <li>El **Mapa de la República Mexicana** con la palabra "IPN" al centro resalta el compromiso nacional y la dispersión de sus unidades académicas por todo el país.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="Nueva carpeta\imagenes\escudo (2).jpg" alt="Escudo del CECyT 4"></td>
+                        <td><strong>Escudo del CECyT 4 "Lázaro Cárdenas":</strong> Aunque cada CECyT tiene un escudo propio que lo distingue, todos mantienen elementos que los vinculan al IPN. El escudo del CECyT 4 usualmente incorpora referencias a su especialización técnica (por ejemplo, elementos relacionados con la mecánica o la aviación, ya que es la vocacional de aviación), así como el nombre del General Lázaro Cárdenas, figura clave en la fundación del Politécnico, reforzando su legado histórico y compromiso con la educación técnica.</td>
+                    </tr>
+                    <tr>
+                        <td><img src="Nueva carpeta\imagenes\descarga (1).jpg" alt="Mascota del IPN"></td>
+                        <td><strong>Mascota (Burro Blanco):</strong> El Burro Blanco es la icónica mascota del IPN. Su elección se atribuye a diversas leyendas, una de ellas relacionada con los burros que transportaban material para la construcción de los primeros edificios politécnicos. Más allá de anécdotas, el Burro Blanco simboliza la **fortaleza, la resistencia, la nobleza y la inteligencia**, cualidades que se asocian con los estudiantes y egresados del Politécnico. Es un elemento de gran arraigo y orgullo en la comunidad.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="container">
+            <h2>La Mascota del IPN: El Emblemático Burro Blanco</h2>
+            <div class="multimedia-container">
+                <img src="Nueva carpeta\imagenes\Mascota_del_IPN.jpg" alt="Burro Blanco Mascota IPN" class="center-image" style="max-width: 300px;">
+                <p>El **Burro Blanco** es, sin duda, la mascota más querida y reconocida del Instituto Politécnico Nacional. Su presencia es fundamental en eventos deportivos, culturales y académicos, donde anima a la comunidad y representa el espíritu indomable del Politécnico. La historia de cómo un burro se convirtió en el emblema de una institución de alta tecnología es variada, pero todas las versiones coinciden en que este animal encarna la perseverancia y la humildad, virtudes que distinguen a los politécnicos. A menudo, el "Burro Blanco" también es el apodo de los equipos deportivos del IPN.</p>
+                <p>Conoce más sobre la historia y el significado de nuestra querida mascota en el siguiente video:</p>
+                <h3>Video sobre el Burro Blanco</h3>
+                <video controls width="640" height="360">
+                    <source src="Nueva carpeta\audio y foto\BURRITO BLANCO.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Ley Orgánica del IPN: El Pilar Legal</h2>
+            <p>La **Ley Orgánica del Instituto Politécnico Nacional** es el marco legal fundamental que rige la estructura, organización y funcionamiento de la institución. En ella se establecen sus fines, atribuciones, la conformación de sus órganos de gobierno, la autonomía técnica y académica, así como las responsabilidades de sus autoridades y la comunidad en general. Es un documento esencial para comprender la vida institucional del IPN y su relación con el Estado mexicano. Su conocimiento es clave para todos los miembros de la comunidad politécnica.</p>
+            <p>Puedes acceder y descargar la versión más reciente de la Ley Orgánica directamente desde el sitio oficial del IPN para una consulta detallada:</p>
+            <p><a href=https://www.diputados.gob.mx/LeyesBiblio/pdf/171.pdf target="_blank">Ley Orgánica del Instituto Politécnico Nacional (PDF)</a></p>
+        </section>
+
+        <section id="imagenes" class="container">
+            <h2>Galería de Imágenes del IPN: Un Recorrido Visual</h2>
+            <p>Explora a través de esta galería visual algunos de los momentos y lugares más representativos del Instituto Politécnico Nacional. Desde su icónica mascota, el Burro Blanco, hasta las vistas de sus campus y la vida estudiantil, estas imágenes capturan la esencia del orgullo politécnico.</p>
+            <div class="image-gallery">
+                <img src="Nueva carpeta\imagenes\descarga (1).jpg" alt="Burro Blanco Mascota IPN" title="Mascota del IPN: El Burro Blanco">
+                <img src="Nueva carpeta\imagenes\images (1).jpg" alt="Edificio IPN Zacatenco" title="Vista de Zacatenco, campus principal del IPN">
+                <img src="Nueva carpeta\imagenes\depo (1).jpg" alt="Deportes IPN" title="Actividades deportivas en el IPN">
+                <img src="Nueva carpeta\imagenes\aerei (2).jpg" alt="Escudo IPN" title="Vista aerea del area deportiva">
+                <img src="Nueva carpeta\imagenes\escudo.jpg" alt="Escudo del IPN">
+                <img src="Nueva carpeta\imagenes\VISTA AEREA.jfif" alt="Vista Aérea de Zacatenco" title="Vista Aérea del Casco de Santo Tomás">
+                <img src="Nueva carpeta\imagenes\PRODESIR.jfif" alt="Estudiantes del IPN" title="Vida estudiantil en el IPN">
+                <img src="Nueva carpeta\imagenes\ESTU.jfif" alt="Profesores IPN" title="Profesores y alumnos en el IPN">
+            </div>
+            <p>Se muestran imágenes en formatos comunes como JPG y PNG, que reflejan la diversidad y dinamismo de la comunidad politécnica.</p>
+        </section>
+
+        <section id="multimedia" class="container">
+            <h2>Multimedia Politécnica: Sonidos e Imágenes del IPN</h2>
+            <p>Sumérgete en la experiencia politécnica a través de nuestros recursos multimedia. Desde el emotivo Himno del IPN, que exalta los valores y la historia de la institución, hasta videos que muestran la trayectoria y el impacto del Instituto en el desarrollo de México.</p>
+            <div class="multimedia-container">
+                <h3>Himno del IPN (Audio Oficial)</h3>
+                <audio controls>
+                    <source src="Nueva carpeta\audio y foto\WhatsApp Audio 2025-05-28 at 11.40.22 PM.mpeg" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+                <p>El himno oficial del Instituto Politécnico Nacional es una pieza fundamental que inspira a la comunidad, recordando el compromiso con la técnica y la patria. Se entona en ceremonias y eventos importantes.</p>
+
+                <h3>Video Institucional del IPN</h3>
+                <video controls width="640" height="360">
+                    <source src="Nueva carpeta\audio y foto\WhatsApp Video 2025-05-28 at 11.42.42 PM.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <p>Este video promocional ofrece un panorama general sobre la rica historia, la amplia oferta educativa y los logros destacados del IPN, invitando a la comunidad a ser parte de esta gran institución.</p>
+            </div>
+        </section>
+
+        <section id="directorio" class="container">
+            <h2>Directorio de Contacto - Áreas Académicas Clave del IPN</h2>
+            <p>A continuación, encontrarás una tabla con información de contacto para algunas de las escuelas y áreas más representativas del IPN. Esta información te será útil para consultas generales, trámites o para conocer más sobre cada unidad académica.</p>
+            <table>
+                <caption>Facultades y Contactos Clave</caption>
+                <thead>
+                    <tr>
+                        <th>Área/Escuela</th>
+                        <th>Contacto General (Teléfono)</th>
+                        <th>Correo Electrónico</th>
+                        <th>Imagen Representativa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ESCOM (Escuela Superior de Cómputo)</td>
+                        <td>55 5729 6000 ext. 52001</td>
+                        <td><a href="mailto:escom@ipn.mx">escom@ipn.mx</a></td>
+                        <td><img src="E:\Nueva carpeta\imagenes\WhatsApp Image 2025-05-28 at 11.45.15 PM.jpeg" class="table-image" alt="Logo ESCOM"></td>
+                    </tr>
+                    <tr>
+                        <td>ESIME Zacatenco (Escuela Superior de Ingeniería Mecánica y Eléctrica, Unidad Zacatenco)</td>
+                        <td>55 5729 6000 ext. 54000</td>
+                        <td><a href="mailto:esime.zacatenco@ipn.mx">esime.zacatenco@ipn.mx</a></td>
+                        <td><img src="E:\Nueva carpeta\imagenes\WhatsApp Image 2025-05-28 at 11.45.48 PM.jpeg" class="table-image" alt="Logo ESIME Zacatenco"></td>
+                    </tr>
+                    <tr>
+                        <td>ENCB (Escuela Nacional de Ciencias Biológicas)</td>
+                        <td>55 5729 6000 ext. 62300</td>
+                        <td><a href="mailto:encb@ipn.mx">encb@ipn.mx</a></td>
+                        <td><img src="E:\Nueva carpeta\imagenes\WhatsApp Image 2025-05-28 at 11.46.21 PM.jpeg" class="table-image" alt="Logo ENCB"></td>
+                    </tr>
+                    <tr>
+                        <td>UPIITA (Unidad Profesional Interdisciplinaria de Ingeniería y Tecnologías Avanzadas)</td>
+                        <td>55 5729 6000 ext. 56000</td>
+                        <td><a href="mailto:upiita@ipn.mx">upiita@ipn.mx</a></td>
+                        <td><img src="E:\Nueva carpeta\imagenes\upiita-logo-F3DFC7ADFD-seeklogo.com.png" class="table-image" alt="Logo UPIITA"></td>
+                    </tr>
+                    <tr>
+                        <td>CECyT 4 "Lázaro Cárdenas"</td>
+                        <td>55 5729 6000 ext. 63000</td>
+                        <td><a href="mailto:cecyt4@ipn.mx">cecyt4@ipn.mx</a></td>
+                        <td><img src="E:\Nueva carpeta\imagenes\escudo (2).jpg" alt="Logo CECyT 4"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Para más información sobre contactos y otras unidades, visita el sitio oficial del IPN o utiliza su buscador interno.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section id="enlaces" class="container">
+            <h2>Páginas de Interés del IPN: Recursos Adicionales</h2>
+            <p>Para complementar tu exploración sobre el Instituto Politécnico Nacional, te ofrecemos una serie de enlaces directos a recursos importantes y páginas de interés. Aquí podrás encontrar información oficial y detallada sobre diversos aspectos de la vida politécnica.</p>
+            <ul>
+                <li><a href="https://www.ipn.mx/" target="_blank">**Sitio Oficial del IPN**</a> - El portal principal y la fuente más completa de información institucional, noticias, eventos y servicios.</li>
+                <li><a href="https://www.ipn.mx/educacion/oferta-academica/" target="_blank">**Oferta Educativa**</a> - Explora a fondo todas las carreras a nivel superior y medio superior, así como los programas de posgrado que ofrece el IPN, con planes de estudio y requisitos.</li>
+                <li><a href="https://www.ipn.mx/transparencia/" target="_blank">**Transparencia IPN**</a> - Accede a la información pública sobre el uso de recursos, procesos administrativos y rendición de cuentas, garantizando la transparencia de la institución.</li>
+                <li><a href="https://www.ipn.mx/transporte/" target="_blank">**Sistema de Transporte Universitario (STU)**</a> - Conoce las rutas, horarios y funcionamiento del servicio de transporte interno y externo que facilita la movilidad de la comunidad politécnica en los campus principales.</li>
+                <li><a href="https://www.ipn.mx/cultura/galerias/" target="_blank">**Galerías de Eventos y Fotos**</a> - Sumérgete en la vida cultural y académica del IPN a través de colecciones fotográficas de ceremonias, festivales, exposiciones y momentos clave de la comunidad.</li>
+                <li><a href="https://www.egresados.ipn.mx/" target="_blank">**Coordinación de Egresados y Servicio Social**</a> - Un portal dedicado a los exalumnos del IPN, con servicios, oportunidades y noticias relevantes para su desarrollo profesional y vinculación con el Instituto.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Instituto Politécnico Nacional. CECyT 4 "Lázaro Cárdenas"</p>
+            <p>Desarrollado por dario y andrich.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
